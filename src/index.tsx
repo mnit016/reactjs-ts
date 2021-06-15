@@ -3,21 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore,applyMiddleware} from 'redux'
-import { Provider } from 'react-redux'
-import {createEpicMiddleware} from 'redux-observable';
-import rootReducer from './reducers/index'
-import rootEpic from './epics/index';
 import { BrowserRouter, Route } from "react-router-dom";
 
-
-
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Route path="/" component={App} />
-    </BrowserRouter>
-  </Provider>,
+  <BrowserRouter>
+    <Route path="/" component={App} />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
