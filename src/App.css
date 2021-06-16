@@ -13,7 +13,8 @@ body {
 
 .login-box {
   width: 450px;
-  margin: 100px auto;
+  margin: auto;
+  padding-top: 100px;
   opacity: 0.95;
   border-radius: 5px;
 }
@@ -47,4 +48,31 @@ body {
   height: 100%;
   background-color: aliceblue;
   opacity: 0.95;
+}
+
+.nav-link {
+  margin-right: 25px;
+  padding-bottom: 21px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-link-active {
+  border-bottom: 3px solid blue;
+  color: blue;
+}
+
+.nav-link:hover {
+  border-bottom: 3px solid blue;
+  color: blue;
+}
+
+#alert-error {
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.alert-active {
+  opacity: 1 !important;
 }
