@@ -11,3 +11,8 @@ export const getUsername = () => {
 export const getPassword = () => {
     return localStorage.getItem(PASSWORD_KEY) === 'null' ? null : localStorage.getItem(PASSWORD_KEY)
 }
+
+export const clear = () => {
+    localStorage.removeItem(USERNAME_KEY)
+    localStorage.removeItem(PASSWORD_KEY)
+}

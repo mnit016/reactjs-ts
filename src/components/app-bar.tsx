@@ -4,9 +4,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { clear } from '../common/local-storage';
+import { useEffect, useState } from 'react';
+import { getPassword, getUsername } from "../common/local-storage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,7 +34,22 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function QuizzAppBar() {
-const classes = useStyles();
+  const classes = useStyles();
+  const history = useHistory();
+  const defaultBtn = <NavLink className="link-nondecoration" to="/login"><Button variant="contained" size="small" color="primary">Login</Button></NavLink>
+  const [button, setButton] = useState(() => defaultBtn)
+  const logout = () => {
+    clear()
+    history.push("/")
+    setButton(defaultBtn)
+  }
+  useEffect(() => {
+    if (getPassword() === "sa" && getUsername() === "sa") {
+      setButton(() => <NavLink className="link-nondecoration" to="/"><Button variant="contained" onClick={logout} size="small" color="primary">Logout</Button></NavLink>)
+    }
+  }, [])
+
+
   return (
     <div className={classes.root}>
       <AppBar color="default" position="static">
@@ -49,7 +66,7 @@ const classes = useStyles();
                 <NavLink exact={true} activeClassName="nav-link-active" className="nav-link" to="/">Home</NavLink>
                 <NavLink activeClassName="nav-link-active" className="nav-link" to="/quizz">Quizz Challenge</NavLink>
                 <NavLink activeClassName="nav-link-active" className="nav-link" to="/result">View Result</NavLink>
-                <NavLink to="/login"><Button variant="contained" size="small" color="primary">Login</Button></NavLink>
+                {button}                
             </div>
         </Toolbar>
       </AppBar>

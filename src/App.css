@@ -76,3 +76,18 @@ body {
 .alert-active {
   opacity: 1 !important;
 }
+
+.wellcome-box {
+  width: 550px;
+  margin: auto;
+  padding-top: 200px;
+  text-align: center;
+}
+
+.warning-image {
+  height: 150px;
+}
+
+.link-nondecoration {
+  text-decoration: none;
+}
