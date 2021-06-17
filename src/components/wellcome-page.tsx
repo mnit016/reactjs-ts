@@ -2,29 +2,17 @@ import { useEffect, useState } from "react";
 import { getPassword, getUsername } from "../common/local-storage";
 import '../App.css'
 import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-export default function WellComePage() {
-    const loggedin = <LoggedInWellCome/>
-    const notLogin = <NotLogInWellCome/>
-    const [wellcomeText, setWellcomeText] = useState(() => notLogin)
+export function NotLogInWellCome() {
+    const history = useHistory();
     useEffect(() => {
         if (getPassword() === "sa" && getUsername() === "sa") {
-            setWellcomeText(loggedin)
-        } else {
-            setWellcomeText(notLogin)
+            history.push("/home")
         }
-    })
+    }, [])
     return (
         <div className="wellcome-box">
-            {wellcomeText}
-        </div>
-    );
-}
-
-function NotLogInWellCome() {
-    return (
-        <div>
             <img className="warning-image" alt="danger" src="../danger.png"/>
             <h2>Are you ready for challenge?</h2>
             <p>The quiz is ready to start, but you need to login first to accept it</p>
@@ -33,9 +21,15 @@ function NotLogInWellCome() {
     )
 }
 
-function LoggedInWellCome() {
+export function LoggedInWellCome() {
+    const history = useHistory();
+    useEffect(() => {
+        if (getPassword() !== "sa" && getUsername() !== "sa") {
+            history.push("/403")
+        }
+    }, [])
     return (
-        <div>
+        <div className="wellcome-box">
             <img className="warning-image" alt="danger-blue" src="../danger-blue.png"/>
             <h2>Challenge accepted</h2>
             <p>You have not finished your challenge yet. Get it now to received your ranking</p>

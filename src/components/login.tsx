@@ -9,7 +9,7 @@ const Login = () => {
     const history = useHistory();
     useEffect(() => {
         if (getPassword() === "sa" && getUsername() === "sa") {
-            history.push("/")
+            history.push("/home")
         }
     }, [])
 

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { getPassword, getUsername } from "../common/local-storage";
 import { useHistory } from "react-router-dom";
 
-export default function QuizzResult() {
+export default function ResultHistory() {
+
     const history = useHistory();
     useEffect(() => {
         if (getPassword() !== "sa" && getUsername() !== "sa") {
@@ -12,7 +13,7 @@ export default function QuizzResult() {
     
     return (
         <div>
-            Result here
+            Result history here
         </div>
     )
 }
