@@ -47,6 +47,7 @@ export default function QuizzAppBar() {
     if (getPassword() === "sa" && getUsername() === "sa") {
       setButton(() => <NavLink className="link-nondecoration" to="/"><Button variant="contained" onClick={logout} size="small" color="primary">Logout</Button></NavLink>)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
