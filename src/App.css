@@ -47,7 +47,7 @@ body {
 .home {
   height: 100%;
   background-color: aliceblue;
-  opacity: 0.95;
+  opacity: 1;
 }
 
 .nav-link {
@@ -90,4 +90,28 @@ body {
 
 .link-nondecoration {
   text-decoration: none;
+}
+
+.not-found-page {
+  width: 550px;
+  margin: auto;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.not-found-page img {
+  width: 350px;
+}
+
+.quiz {
+  padding: 30px;
+}
+
+.quiz-list {
+  width: 100%;
+  border-top: 1px solid #d7d7d7;
+}
+
+.quiz-name-active {
+  font-weight: bold;
 }
